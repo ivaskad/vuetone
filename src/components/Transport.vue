@@ -114,10 +114,10 @@ export default {
     // }
     },
     loop: function (val) {
-      this.transport.loop = Number.parseInt(this.loop).toFixed(0)
+      this.transport.loop = this.loop
     },
     loopEnd: function (val) {
-      this.transport.loopEnd = Number.parseInt(this.loopEnd).toFixed(0)
+      this.transport.loopEnd = this.loopEnd
     }
   }
 }
