@@ -24,7 +24,7 @@ export default {
     return {
       loop: {},
       loopStart: 0,
-      loopEnd: '8n'
+      loopEnd: '2m'
     }
   },
   props: {
@@ -52,21 +52,22 @@ export default {
     createLoop: function () {
       let self = this
       var loop = new Tone.Loop(function (time) {
-        self.synth.triggerAttackRelease('C5', '1m', '+0m')
-        self.synth.triggerAttackRelease('D5', '1m', '+1m')
-        self.synth.triggerAttackRelease('E5', '1m', '+2m')
-        self.synth.triggerAttackRelease('F5', '1m', '+3m')
-        self.synth.triggerAttackRelease('G5', '1m', '+4m')
-        self.synth.triggerAttackRelease('A5', '1m', '+5m')
-        self.synth.triggerAttackRelease('B5', '1m', '+6m')
-        self.synth.triggerAttackRelease('C6', '1m', '+7m')
+        self.synth.triggerAttackRelease('C5', '1n', '+0m')
+        // not working properly yet
+        self.synth.triggerAttackRelease('D5', '1n', '+2n')
+        // self.synth.triggerAttackRelease('E5', '1n', '+3n')
+        // self.synth.triggerAttackRelease('F5', '1n', '+4n')
+        // self.synth.triggerAttackRelease('G5', '1n', '+6n')
+        // self.synth.triggerAttackRelease('A5', '1n', '+6n')
+        // self.synth.triggerAttackRelease('B5', '1n', '+7n')
+        // self.synth.triggerAttackRelease('C6', '1n', '+8n')
         console.log('triggering sequence', self.synth)
-      }, '1m')
+      }, '2m')
       loop.start(this.loopStart)
       loop.stop(this.loopEnd)
 
       this.loop = Object.assign({}, this.loop, loop)
-      console.log(this.loop)
+      // console.log(this.loop)
     }
     // setLoopStart: function (loopStart) {
     // },

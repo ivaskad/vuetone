@@ -54,7 +54,7 @@ export default {
       transport: {},
       playing: false,
       loop: false,
-      loopEnd: '8n'
+      loopEnd: '2m'
       // bpm: 120 ,
       // swing: 0 ,
       // swingSubdivision: 8n ,
