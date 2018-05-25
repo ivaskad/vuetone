@@ -5,10 +5,24 @@
     </div>
     <h2 class="drag-anchor">Welcome</h2>
     <div class="section">
-      <div class="component-block">
-        <h3>Go to Vuetone</h3>
-        <div class="component-block-content">
-          <a href="/vuetone" @click.prevent="startAudioContext">Start audio context and continue to Vuetone</a>
+      <div class="section">
+        <div class="component-block">
+          <h3>What really works?</h3>
+          <div class="component-block-content">
+            Not too much :-(<br>
+            There are too many things to be fixed,<br>
+            such as for example validation of inputs,<br>
+            sequencer, transport,<br>
+            and much more<br>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="component-block">
+          <h3>Go to Vuetone</h3>
+          <div class="component-block-content">
+            <a href="/vuetone" @click.prevent="startAudioContext">Start audio context and continue to Vuetone</a>
+          </div>
         </div>
       </div>
     </div>
@@ -37,6 +51,6 @@ export default {
 <style lang="css">
 .component.welcome {
   left: calc(50% - 340px / 2);
-  top: calc(50% - 104px / 2);
+  top: calc(50% - 226px / 2);
 }
 </style>
