@@ -90,6 +90,7 @@ export default {
   background-color: #eee;
 }
 
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 11px;
   height: 11px;

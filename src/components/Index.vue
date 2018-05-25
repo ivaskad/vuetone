@@ -47,7 +47,7 @@ export default {
     height: calc(100vh - 146px);
     position: relative;
     overflow: auto;
-    cursor: move;
+    /* cursor: move; */
   }
   .surface-dragable {
     width: 100%;
