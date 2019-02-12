@@ -1,6 +1,6 @@
 # synth
 
-> A Vue.js project
+> An old Vue.js project in verry first steps
 
 ## Build Setup
 
