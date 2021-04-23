@@ -1,5 +1,5 @@
 <template>
-  <div class="key" :class="{half: half}">
+  <div class="key" :class="{half: half, down: active}">
     <a href="#"
       @mousedown="triggerAttack(note)"
       @mouseup="triggerRelease()"
@@ -38,6 +38,10 @@ export default {
     release: {
       type: String,
       default: '5'
+    },
+    active: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -59,6 +63,7 @@ export default {
 <style scoped>
   .key{
     display: inline-block;
+    padding: 0 0 5px;
   }
   .key a {
     text-align: center;
@@ -74,6 +79,7 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
     padding-bottom: 5px;
+    box-shadow: 0 0 3px gray
   }
   .key a:hover {
     background-color: #eee;
@@ -87,5 +93,14 @@ export default {
     background-color: #000;
     color: #fff;
     height: 80px;
+  }
+  .key a:active{
+    color: lime;
+  }
+  .key.down a {
+    background: linear-gradient(180deg, white, green);
+  }
+  .key.half.down a {
+    background: linear-gradient(180deg, black, green);
   }
 </style>

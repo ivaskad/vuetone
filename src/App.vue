@@ -1,6 +1,8 @@
 <template>
-  <div id="app" class="noselect" :class="{'cursor-hide': !cursorShow}">
-    <router-view/>
+  <div id="app" class="noselect" :class="{'cursor-hide': !cursorShow }">
+    <div class="wrapper" :class="{'cursor-hide': !cursorShow }">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -90,6 +92,10 @@ export default {
   background-color: #eee;
 }
 
+#app .wrapper.cursor-hide {
+  pointer-events: none;
+}
+
 /* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 11px;
@@ -161,16 +167,17 @@ export default {
   margin-left: 5px;
   padding-left: 5px;
   border-left: 1px solid #9d9d9d;
+  vertical-align: top
 }
 .component-block:first-child {
   margin-left: 0px;
   padding-left: 0px;
   border-left: none;
 }
+
 .component-block-content {
   min-height: 22px;
 }
-
 /* compoent header */
 
 .component h2 {

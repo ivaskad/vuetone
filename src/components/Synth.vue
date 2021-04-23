@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="section piano">
-        <keyboard :osc="osc" :rootOctave="rootOctave" :octavesShow="octavesShow"
+        <keyboard :osc="osc" :rootOctave="rootOctave" :octavesShow="octavesShow" :note="note"
           @triggerAttack="triggerAttack($event)"
           @triggerRelease="triggerRelease($event)"
         ></keyboard>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import { EventBus } from '../EventBus.js'
+
 import Keyboard from './Keyboard/Keyboard'
 import Envelope from './Envelope/Envelope'
 import Osc from './Osc/Osc'
@@ -48,15 +50,24 @@ export default {
   data () {
     return {
       osc: {},
-      note: 'C4',
+      note: '',
       octavesShow: 2,
-      rootOctave: 4,
+      rootOctave: 3,
       trigger: false
     }
   },
   props: {
   },
   mounted: function () {
+    let self = this
+    EventBus.$on('QW_triggerAttack', function (event) {
+      console.log('Synth note', event)
+      self.note = event
+    })
+    EventBus.$on('QW_triggerRelease', function (event) {
+      console.log('Synth end note', event)
+      self.note = ''
+    })
   },
   methods: {
     parameterChange: function (parameter, payload) {
@@ -81,7 +92,7 @@ export default {
     },
     triggerRelease: function (payload) {
       this.trigger = false
-      this.note = payload
+      this.note = ''
       this.osc.triggerRelease()
     }
   },
