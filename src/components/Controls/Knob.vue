@@ -3,7 +3,7 @@
     <div class="control-wheel-wrapper">
       <div class="control-wheel" :style="wheelRotation" @mousedown="mousedown = true"></div>
     </div>
-    <input type="number" :min="min" :max="max" :step="step" name="" v-model="current">
+    <input type="number" :min="min" :max="max" :step="step" name="" v-model="current" :style="inputClass">
     <label class="control-property-label">{{label}}</label>
   </div>
 </template>
@@ -58,13 +58,20 @@ export default {
       return this.centered ? this.delta : 0
     },
     rotationZ: function () {
-      let rotation = ((this.current / this.max * (this.delta * 2 - this.centeredDelta)) - (this.delta - this.centeredDelta))
-      return rotation
+      return ((this.current / this.max * (this.delta * 2 - this.centeredDelta)) - (this.delta - this.centeredDelta))
     },
     wheelRotation: function () {
       return {
         color: 'red',
         transform: 'rotateZ(' + this.rotationZ + 'deg)'
+      }
+    },
+    inputClass: function () {
+      if (this.mousedown === true) {
+        return {
+          cursonr: 'none',
+          pointerEvents: 'none'
+        }
       }
     }
   },
@@ -88,21 +95,26 @@ export default {
     MOUSE_MOVE: function (event) {
       if (this.mousedown === true) {
         this.mousemove = true
-        console.log('KNOB:mousemove', this.label, event.clientY)
         EventBus.$emit('cursor-hide')
+
+        let evClY = event.clientY
+        console.log('KNOB:mousemove', event.clientY, Math.floor(window.innerHeight / (this.max * 15)) )
 
         let step = 1
         if (this.step < 1) {
-          step = this.max / 32
+          step = this.max / 64
+        } else {
+          // TODO TODO TODO TODO TODO TODO TODO
+          evClY = evClY % Math.floor(window.innerHeight / (this.max * 15)) === 0 ? evClY : this.lastClientY
         }
 
-        if (event.clientY < this.lastClientY) {
+        if (evClY < this.lastClientY) {
           this.setSanitazed(this.current + step)
-        } else if (event.clientY > this.lastClientY) {
+        } else if (evClY > this.lastClientY) {
           this.setSanitazed(this.current - step)
         }
 
-        this.lastClientY = event.clientY
+        this.lastClientY = evClY
       }
     },
     setSanitazed: function (val) {

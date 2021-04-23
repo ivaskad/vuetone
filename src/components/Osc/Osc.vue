@@ -49,8 +49,8 @@ export default {
       osc: {
         envelope: {
           attack: 0.1,
-          decay: 1,
-          sustain: 0.5,
+          decay: 0.3,
+          sustain: 0,
           release: 0.15
         }
       }
@@ -62,8 +62,8 @@ export default {
       default: function () {
         return {
           attack: 0.1,
-          decay: 1,
-          sustain: 0.5,
+          decay: 0.3,
+          sustain: 0,
           release: 0.15
         }
       }

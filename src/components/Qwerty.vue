@@ -2,9 +2,9 @@
   <div class="component qwerty-trigger" v-draggable.window style="min-width: 200px;">
     <div class="component-header-controll-area">
       <div class="component-header-controll circle" :style="triggeredNote ? 'background-color: lime;' : ''"></div>
-      <!-- <div class="component-header-controll" v-if="keydown">
+      <div class="component-header-controll" v-if="keydown">
         {{key}}
-      </div> -->
+      </div>
     </div>
     <h2 class="drag-anchor">Keyboard Controll</h2>
     <div class="">
@@ -20,6 +20,10 @@
             </div>
           </div>
         </div>
+        <div class="component-block settings">
+          <h3>Settings</h3>
+          <knob :title="'Root note'" :step="1" :min="0" :max="7" :default="octave" @change="octave = $event"></knob>
+        </div>
       </div>
     </div>
   </div>
@@ -28,7 +32,12 @@
 <script>
 import { EventBus } from '../EventBus.js'
 
+import Knob from './Controls/Knob'
+
 export default {
+  components: {
+    knob: Knob
+  },
   data: function () {
     return {
       key: '',
@@ -36,7 +45,7 @@ export default {
       keydown: false,
       keyToNote: [],
       triggeredNote: false,
-      octave: 5
+      octave: 3
     }
   },
   props: {
@@ -59,6 +68,8 @@ export default {
       if (self.note !== undefined && self.keydown === true) {
         console.log('trigering note', self.note)
         self.synth.triggerAttack(self.note)
+
+        EventBus.$emit('QW_triggerAttack', self.note)
       }
     })
     EventBus.$on('keyup', function (event) {
@@ -66,6 +77,8 @@ export default {
       self.keydown = false
       if (self.triggeredNote !== false) {
         self.synth.triggerRelease()
+
+        EventBus.$emit('QW_triggerRelease', self.note)
       }
     })
 

@@ -53,7 +53,7 @@ export default {
       },
       transport: {},
       playing: false,
-      loop: false,
+      loop: true,
       loopEnd: '2m'
       // bpm: 120 ,
       // swing: 0 ,

@@ -4,51 +4,51 @@
     <div class="keynotes wrapper" :style="wrapperWidth">
       <div class="scroll-area" :style="keyboardWidth">
         <div class="octave" v-for="n in octavesShow" :key="n">
-          <key :osc="osc" :note="'C'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'C'+(rootOctave + n - 1)" :active="note === 'C'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'C'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'C'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'C#'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'C#'+(rootOctave + n - 1)" :active="note === 'C#'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'C#'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'C#'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'D'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'D'+(rootOctave + n - 1)" :active="note === 'D'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'D'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'D'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'D#'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'D#'+(rootOctave + n - 1)" :active="note === 'D#'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'D#'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'D#'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'E'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'E'+(rootOctave + n - 1)" :active="note === 'E'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'E'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'E'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'F'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'F'+(rootOctave + n - 1)" :active="note === 'F'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'F'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'F'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'F#'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'F#'+(rootOctave + n - 1)" :active="note === 'F#'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'F#'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'F#'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'G'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'G'+(rootOctave + n - 1)" :active="note === 'G'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'G'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'G'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'G#'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'G#'+(rootOctave + n - 1)" :active="note === 'G#'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'G#'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'G#'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'A'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'A'+(rootOctave + n - 1)" :active="note === 'A'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'A'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'A'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'A#'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'A#'+(rootOctave + n - 1)" :active="note === 'A#'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'A#'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'A#'+(rootOctave + n - 1))"
             ></key>
-          <key :osc="osc" :note="'B'+(rootOctave + n - 1)"
+          <key :osc="osc" :note="'B'+(rootOctave + n - 1)" :active="note === 'B'+(rootOctave + n - 1)"
             @triggerAttack="$emit('triggerAttack', 'B'+(rootOctave + n - 1))"
             @triggerRelease="$emit('triggerRelease', 'B'+(rootOctave + n - 1))"
             ></key>
@@ -80,6 +80,10 @@ export default {
     octavesShow: {
       type: Number,
       default: 2
+    },
+    note: {
+      type: String,
+      default: ''
     }
   },
   computed: {
